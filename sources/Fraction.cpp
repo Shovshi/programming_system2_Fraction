@@ -4,87 +4,91 @@
 namespace ariel{
 
 // Constructors
-    Fraction::Fraction(int a, int b)
+    Fraction::Fraction(int numerator, int denominator)
     {
-        this->a = a;
-        this->b = b;
+        this->numerator= numerator;
+        this->denominator = denominator;
     }
     Fraction::Fraction(float num)
     {
-        // Convert the float to a fraction
+        // Convert the float to numeratorfraction
         int sign = (num >= 0) ? 1 : -1;
         num *= sign;
         int int_part = (int)num;
         int frac_part = round((num - int_part) * 1000);
         int gcd_val = gcd(frac_part, 1000);
-        this->a = sign * (int_part * 1000 / gcd_val) + frac_part / gcd_val;
-        this->b = 1000 / gcd_val;
+        this->numerator= sign * (int_part * 1000 / gcd_val) + frac_part / gcd_val;
+        this->denominator = 1000 / gcd_val;
     }
     Fraction::Fraction(const Fraction& other)
     {
-        this->a = other.a ;
-        this->b = other.a ;
+        this->numerator= other.numerator;
+        this->denominator = other.numerator;
     }
+
+    // Destructor
+    Fraction::~Fraction(){}
 
     // Operators 
-    std::ostream& operator<<(std::ostream& os, const ariel::Fraction& f)
+
+    std::ostream& operator<<(std::ostream& ostr, const ariel::Fraction& f)
     {
-        os << f.a << "/" << f.b;
-        return os;
+        ostr << f.numerator<< "/" << f.denominator;
+        return ostr;
     }
 
-    Fraction operator+(const Fraction& f1, const Fraction& f2)
+    Fraction operator+(const Fraction& frac1, const Fraction& frac2)
     {
         return 1;
     }
-    Fraction operator+(const Fraction &f1, const float num)
+    Fraction operator+(const Fraction &frac1, const float num)
     {
         return 1;
     }
-    Fraction operator-(const Fraction& f1 , const Fraction& f2)
+    Fraction operator-(const Fraction& frac1 , const Fraction& frac2)
     {
         return 1;
     }
-    Fraction operator-(const Fraction& f1 , const int num)
+    Fraction operator-(const Fraction& frac1 , const int num)
     {
         return 1;
     }
-    Fraction operator/(const Fraction& f1 , const Fraction& f2)
+    Fraction operator/(const Fraction& frac1 , const Fraction& frac2)
     {
         return 1;
     }
-    Fraction operator*(const Fraction& f1 , const Fraction& f2)
+    Fraction operator*(const Fraction& frac1 , const Fraction& frac2)
     {
         return 1;
     }
-    Fraction operator*(const float num , const Fraction& f1)
+    Fraction operator*(const float num , const Fraction& frac1)
     {
         return 1;
     }
-    Fraction operator++(const Fraction& f1 , int num)
+    Fraction operator++(const Fraction& frac1 , int num)
     {
         return 1;
     }
-    Fraction& operator--(const Fraction& f1)
+    Fraction& operator--(const Fraction& frac1)
     {
-    Fraction& f = const_cast<Fraction&>(f1);
-    f.a -= f.b;
+    Fraction& f = const_cast<Fraction&>(frac1);
+    f.numerator-= f.denominator;
     //f.reduce();
     return f;
     }
-    bool operator>(const Fraction& f1, const float num)
+    bool operator>(const Fraction& frac1, const float num)
     {
         return true;
     }
-    bool operator>=(const Fraction& f1,const Fraction& f2)
+    bool operator>=(const Fraction& frac1,const Fraction& frac2)
     {
         return true;
     }
 
-    int Fraction::gcd(int a, int b)
+    int Fraction::gcd(int num1, int num2)
     {
-        if (b == 0) return a;
-        return Fraction::gcd(b, a % b);
+        if (num2 == 0) return num1;
+        return Fraction::gcd(num2, num1 % num2);
     }
 
 }

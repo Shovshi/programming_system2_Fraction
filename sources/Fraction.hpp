@@ -7,31 +7,33 @@ namespace ariel
     class Fraction{
 
     public:
-    int a;
-    int b;
+    int numerator;
+    int denominator;
 
     //Help functions
-    int gcd(int a, int b);
+    int gcd(int num1, int num2);
 
     // Constructors
-    Fraction(int a, int b);
+    Fraction(int numerator, int denominator);
     Fraction(float num);
-    Fraction(const Fraction& other);
-    Fraction(){}
+    //Fraction(const Fraction& other);
+    //Fraction(){}
+    //~Fraction();
 
     // Operators 
-    friend ostream& operator<<(ostream& os, const Fraction& f);
-    friend Fraction operator+(const Fraction& f1, const Fraction& f2);
-    friend Fraction operator+(const Fraction &f1, const float num);
-    friend Fraction operator-(const Fraction& f1 , const Fraction& f2);
-    friend Fraction operator-(const Fraction& f1 , const int num);
-    friend Fraction operator/(const Fraction& f1 , const Fraction& f2);
-    friend Fraction operator*(const Fraction& f1 , const Fraction& f2);
-    friend Fraction operator*(const float num , const Fraction& f1);
-    friend Fraction operator++(const Fraction& f1 , int num);
-    friend Fraction& operator--(const Fraction& f1);
-    friend bool operator>(const Fraction& f1, const float num);
-    friend bool operator>=(const Fraction& f1,const Fraction& f2);
+    friend ostream& operator<<(ostream& ostr, const Fraction& frac);
+    friend Fraction operator+(const Fraction& frac1, const Fraction& frac2);
+    friend Fraction operator+(const Fraction &frac1, float num);
+    friend Fraction operator-(const Fraction& frac1 , const Fraction& frac2);
+    friend Fraction operator-(const Fraction& frac1 , int num);
+    friend Fraction operator/(const Fraction& frac1 , const Fraction& frac2);
+    friend Fraction operator*(const Fraction& frac1 , const Fraction& frac2);
+    friend Fraction operator*(float num , const Fraction& frac1);
+    friend Fraction operator++(const Fraction& frac1 , int num);
+    friend Fraction& operator--(const Fraction& frac1);
+    friend bool operator>(const Fraction& frac1, float num);
+    friend bool operator>=(const Fraction& frac1,const Fraction& frac2);
+
     };
 
 }
